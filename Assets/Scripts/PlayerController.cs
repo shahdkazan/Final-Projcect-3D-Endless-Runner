@@ -264,7 +264,7 @@ using UnityEngine.InputSystem;
 public class CharacterAnimations : MonoBehaviour
 {
     [Header("Movement Settings")]
-    public float forwardSpeed = 10f;        // Auto-run forward speed
+    public float forwardSpeed = 5f;        // Auto-run forward speed
     public float strafeSpeed = 6f;          // Left/right speed
     public float jumpHeight = 2f;           // Jump height
     public float gravity = -9.81f;          // Gravity
