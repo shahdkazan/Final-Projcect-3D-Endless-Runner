@@ -206,13 +206,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.08085284, y: -0.70073503, z: 0.081247285, w: 0.7041536}
-  m_LocalPosition: {x: 53.32, y: 2.6, z: -0.11}
+  m_LocalRotation: {x: 0.13225505, y: -0.69287443, z: 0.13290027, w: 0.6962551}
+  m_LocalPosition: {x: 53.32, y: 2.2, z: -0.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 13.164, y: -89.714, z: 0.065}
+  m_LocalEulerAnglesHint: {x: 21.613, y: -89.7, z: 0.11}
 --- !u!114 &330585547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -694,6 +694,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2172558956300567730, guid: 4a7a8b6f6cacb6a43a801c61b6dbaca6, type: 3}
       propertyPath: m_Name
+      value: Segment
+      objectReference: {fileID: 0}
+    - target: {fileID: 2172558956300567730, guid: 4a7a8b6f6cacb6a43a801c61b6dbaca6, type: 3}
+      propertyPath: m_TagString
       value: Segment
       objectReference: {fileID: 0}
     - target: {fileID: 5654892399969926921, guid: 4a7a8b6f6cacb6a43a801c61b6dbaca6, type: 3}
