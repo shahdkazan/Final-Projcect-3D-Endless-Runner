@@ -330,13 +330,22 @@ public class CharacterAnimations : MonoBehaviour
                 move = transform.forward * forwardSpeed + transform.right * horizontalInput * strafeSpeed;
                 characterAnimator.SetBool("isRunning", true);
             }
+           
         }
 
         controller.Move(move * Time.deltaTime);
 
+       
+
+
         // Apply gravity
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+
+        // FINAL CLAMP (after all movement)
+        Vector3 pos = transform.position;
+        pos.z = Mathf.Clamp(pos.z, -7f, 7f);
+        transform.position = pos;
     }
 
     public void OnMove(InputValue value)
