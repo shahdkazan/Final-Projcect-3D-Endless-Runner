@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleData
   prefab: {fileID: 673004424218138295, guid: 0a1c87b46106f524783d116063b4bb54, type: 3}
   size: {x: 1, y: 1, z: 1}
-  speed: 0
-  spawnChance: 0
-  lane: 0
+  spawnChance: 0.749
   tagName: Obstacle
+  movementType: 1
+  speed: 10

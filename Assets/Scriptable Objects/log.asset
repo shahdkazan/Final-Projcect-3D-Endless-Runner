@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d9293e03eaee0f44b2056b368bdf219, type: 3}
-  m_Name: Tomato Crate Pack
+  m_Name: log
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleData
-  prefab: {fileID: 732853410855628089, guid: 003e54f7c12dd3f4dbaca043fe72fb74, type: 3}
-  size: {x: 1, y: 1, z: 1}
-  speed: 0
-  spawnChance: 0.892
+  prefab: {fileID: 3272503176059353992, guid: f92bc153658bc784e801eb5b014ed0b1, type: 3}
+  size: {x: 1, y: 3, z: 1}
+  spawnChance: 0.958
   tagName: Obstacle
+  movementType: 1
+  speed: 10

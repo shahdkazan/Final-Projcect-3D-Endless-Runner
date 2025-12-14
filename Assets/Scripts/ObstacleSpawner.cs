@@ -199,6 +199,90 @@
 //}
 
 //another way to spawn in segment but with time intevral 
+//using System.Collections;
+//using System.Collections.Generic;
+//using UnityEngine;
+
+//public class ObstacleSpawner : MonoBehaviour
+//{
+//    public ObstacleData[] obstacles;       // List of obstacle types
+//    public int maxObstaclesPerSegment = 3; // Max obstacles in this segment
+//    public float minX = -50f;
+//    public float maxX = 50f;
+//    public float minZ = -7f;
+//    public float maxZ = 7f;
+//    public float minSpawnInterval = 1f;    // Min delay between obstacles
+//    public float maxSpawnInterval = 3f;    // Max delay between obstacles
+
+//    private void Start()
+//    {
+//        StartCoroutine(SpawnObstaclesRoutine());
+//    }
+
+//    private IEnumerator SpawnObstaclesRoutine()
+//    {
+//        int obstaclesToSpawn = Random.Range(1, maxObstaclesPerSegment + 1);
+
+//        for (int i = 0; i < obstaclesToSpawn; i++)
+//        {
+//            ObstacleData selected = PickObstacle();
+//            if (selected != null)
+//            {
+//                // Random position inside the segment
+//                float xPos = Random.Range(minX, maxX);
+//                float zPos = Random.Range(minZ, maxZ);
+//                Vector3 spawnPos = transform.position + new Vector3(xPos, 0f, zPos);
+
+//                // Instantiate obstacle as child of segment
+//                //GameObject obj = Instantiate(selected.prefab, spawnPos, Quaternion.identity, transform);
+
+//                Vector3 spawnPosWithPrefabY = spawnPos;
+//                spawnPosWithPrefabY.y = selected.prefab.transform.position.y;
+
+//                GameObject obj = Instantiate(
+//                    selected.prefab,
+//                    spawnPosWithPrefabY,
+//                    selected.prefab.transform.rotation,
+//                    transform
+//                );
+//                //GameObject obj = Instantiate(selected.prefab, spawnPos, selected.prefab.transform.rotation, transform);
+//                obj.transform.localScale = selected.size;
+
+//                // Assign tag from ScriptableObject
+//                obj.tag = selected.tagName;
+//                //    // Optional: assign moving speed if obstacle moves
+//                //    MovingObstacle mover = obj.GetComponent<MovingObstacle>();
+//                //    if (mover != null)
+//                //        mover.speed = selected.speed;
+//                // Add movement script if obstacle type requires it
+//                if (selected.movementType == ObstacleMovementType.Rolling)
+//                {
+//                    RollingRock rock = obj.AddComponent<RollingRock>();
+
+//                    rock.moveSpeed = selected.speed;
+//                }
+//            }
+
+//            // Wait a random interval before spawning next obstacle
+//            float waitTime = Random.Range(minSpawnInterval, maxSpawnInterval);
+//            yield return new WaitForSeconds(waitTime);
+//        }
+//    }
+
+//    private ObstacleData PickObstacle()
+//    {
+//        List<ObstacleData> candidates = new List<ObstacleData>();
+//        foreach (var obs in obstacles)
+//        {
+//            if (Random.value <= obs.spawnChance)
+//                candidates.Add(obs);
+//        }
+
+//        if (candidates.Count == 0) return null;
+//        return candidates[Random.Range(0, candidates.Count)];
+//    }
+//}
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -234,7 +318,15 @@ public class ObstacleSpawner : MonoBehaviour
                 Vector3 spawnPos = transform.position + new Vector3(xPos, 0f, zPos);
 
                 // Instantiate obstacle as child of segment
-                GameObject obj = Instantiate(selected.prefab, spawnPos, Quaternion.identity, transform);
+                Vector3 spawnPosWithPrefabY = spawnPos;
+                spawnPosWithPrefabY.y = selected.prefab.transform.position.y;
+
+                GameObject obj = Instantiate(
+                    selected.prefab,
+                    spawnPosWithPrefabY,
+                    selected.prefab.transform.rotation,
+                    transform
+                );
                 obj.transform.localScale = selected.size;
 
                 // Assign tag from ScriptableObject
@@ -243,6 +335,13 @@ public class ObstacleSpawner : MonoBehaviour
                 //    MovingObstacle mover = obj.GetComponent<MovingObstacle>();
                 //    if (mover != null)
                 //        mover.speed = selected.speed;
+                // Add movement script if obstacle type requires it
+                if (selected.movementType == ObstacleMovementType.Rolling)
+                {
+                    RollingRock rock = obj.AddComponent<RollingRock>();
+
+                    rock.moveSpeed = selected.speed;
+                }
             }
 
             // Wait a random interval before spawning next obstacle

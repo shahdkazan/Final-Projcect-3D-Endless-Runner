@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d9293e03eaee0f44b2056b368bdf219, type: 3}
   m_Name: Tree trunk
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleData
-  prefab: {fileID: -927199367670048503, guid: 780a5a83582857c4c91f685e71c2bd48, type: 3}
+  prefab: {fileID: 2071761064359981808, guid: 4bf15f79950b6ec42bfc09d6d42bcf07, type: 3}
   size: {x: 1, y: 1, z: 1}
   speed: 0
-  spawnChance: 0.5
-  lane: 0
+  spawnChance: 0.93
   tagName: Obstacle
