@@ -24,7 +24,9 @@ public class GameManager : MonoBehaviour
     float elapsedTime = 0f;
 
 
-
+    public GameObject mainmenubutton;
+    public GameObject panel;
+    public GameObject gameResumebutton;
     // Game state variables
     private int score = 0;           // Player score
     //private bool gameOver = false;   // Tracks if the game is over
@@ -99,4 +101,18 @@ public class GameManager : MonoBehaviour
     //    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     //    MusicPlayer.Instance.PlayMusic(); // Restart background music
     //}
+
+    public void BackMainMenu()
+    {
+        SceneManager.LoadScene("Main Menu");
+    }
+
+    public void Pause()
+    {
+        panel.SetActive(!panel.activeSelf);
+    }
+
+    public void Resume()
+    { panel.SetActive(false);
+    }
 }
