@@ -386,22 +386,27 @@ public class CharacterAnimations : MonoBehaviour
         {
             StartFallBack();
         }
-        //else if (hit.gameObject.CompareTag("Collectable"))
-        //        {
-        //    hit.gameObject.SetActive(false);
-        //    GameManager.Instance.HandlePickup();
-
-        //}
-
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Collectable"))
+        else if (hit.gameObject.CompareTag("Collectable"))
         {
-            other.gameObject.SetActive(false);
-            GameManager.Instance.HandlePickup();
+            Collider col = hit.gameObject.GetComponent<Collider>();
+            if (col != null && col.enabled)
+            {
+                col.enabled = false;              // prevent repeated hits
+                hit.gameObject.SetActive(false); // hide/remove collectable
+                GameManager.Instance.HandlePickup();
+            }
+
         }
+
     }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.CompareTag("Collectable"))
+    //    {
+    //        other.gameObject.SetActive(false);
+    //        GameManager.Instance.HandlePickup();
+    //    }
+    //}
     private void StartFallBack()
     {
         isFalling = true;
