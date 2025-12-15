@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: log
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleData
   prefab: {fileID: 3272503176059353992, guid: f92bc153658bc784e801eb5b014ed0b1, type: 3}
-  size: {x: 1, y: 3, z: 1}
-  spawnChance: 0.958
+  size: {x: 0.5, y: 1.5, z: 0.5}
+  spawnChance: 0.778
   tagName: Obstacle
   movementType: 1
   speed: 10

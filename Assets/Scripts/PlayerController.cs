@@ -386,6 +386,13 @@ public class CharacterAnimations : MonoBehaviour
         {
             StartFallBack();
         }
+        else if (hit.gameObject.CompareTag("Collectable"))
+                {
+            hit.gameObject.SetActive(false);
+            //GameManager.Instance.HandlePickup();
+
+        }
+
     }
 
     private void StartFallBack()
