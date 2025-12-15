@@ -344,7 +344,7 @@ public class CharacterAnimations : MonoBehaviour
 
         // FINAL CLAMP (after all movement)
         Vector3 pos = transform.position;
-        pos.z = Mathf.Clamp(pos.z, -7f, 7f);
+        pos.z = Mathf.Clamp(pos.z, -4f, 4f);
         transform.position = pos;
     }
 
