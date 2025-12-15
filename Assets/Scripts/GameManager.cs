@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     //public TextMeshProUGUI finalScoreText;
     //public TextMeshProUGUI GameOverText;
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI timesurvivedText;
+
 
     // Audio
     public AudioSource audioSource;
@@ -19,12 +21,13 @@ public class GameManager : MonoBehaviour
     //public AudioClip wrongSound;
     //public AudioClip winClip;
     //public AudioClip loseClip;
+    float elapsedTime = 0f;
 
-  
+
 
     // Game state variables
     private int score = 0;           // Player score
-                                     //private bool gameOver = false;   // Tracks if the game is over
+    //private bool gameOver = false;   // Tracks if the game is over
 
 
     // Awake is called before Start used to setup singleton
@@ -44,6 +47,11 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        //if (gameOver) return; // stop counting only after player loses
+
+        // Count up from zero
+        elapsedTime += Time.deltaTime;
+
         // Update UI every frame
         UpdateUI();
     }
@@ -75,14 +83,15 @@ public class GameManager : MonoBehaviour
         // Show game over UI
         //gameOverUI.SetActive(true);
         //finalScoreText.text = "Final Score: " + score;
+        //timesurvivedText.text = elapsedTime.ToString("F2"); // seconds with 2 decimals
 
         // Stop background music
         //MusicPlayer.Instance.StopMusic();
 
-        
-            //audioSource.PlayOneShot(winClip);
-            //GameOverText.text = "GAME OVER YOU WIN";
-            
+
+        //audioSource.PlayOneShot(winClip);
+        //GameOverText.text = "GAME OVER YOU WIN";
+
     }
     // Restart the current scene (game)
     //public void RestartGame()
