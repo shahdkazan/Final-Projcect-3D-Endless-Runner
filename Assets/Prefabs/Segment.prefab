@@ -34941,7 +34941,7 @@ GameObject:
   - component: {fileID: 317014308248481083}
   - component: {fileID: 7953811323096136651}
   m_Layer: 0
-  m_Name: ObstacleSpawner
+  m_Name: Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35013,8 +35013,8 @@ MonoBehaviour:
   spacing: 1.5
   segmentStartX: -50
   segmentEndX: 50
-  minRowGap: 3
-  maxRowGap: 6
+  minRowGap: 5
+  maxRowGap: 7
   lanes:
   - -3
   - -1
