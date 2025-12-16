@@ -34988,8 +34988,8 @@ MonoBehaviour:
   segmentEndX: 50
   minSpacing: 5
   maxSpacing: 10
-  minDelay: 0
-  maxDelay: 2
+  minDelay: 1
+  maxDelay: 5
   lanes:
   - -3
   - -1
