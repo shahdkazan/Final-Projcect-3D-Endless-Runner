@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
     // Game state variables
     private int score = 0;           // Player score
     //private bool gameOver = false;   // Tracks if the game is over
+    public bool IsPaused { get; private set; }
+
 
 
     // Awake is called before Start used to setup singleton
@@ -95,24 +97,32 @@ public class GameManager : MonoBehaviour
         //GameOverText.text = "GAME OVER YOU WIN";
 
     }
-    // Restart the current scene (game)
-    //public void RestartGame()
-    //{
-    //    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    //    MusicPlayer.Instance.PlayMusic(); // Restart background music
-    //}
+    //Restart the current scene(game)
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        MusicPlayer.Instance.PlayMusic(); // Restart background music
+    }
 
     public void BackMainMenu()
     {
         SceneManager.LoadScene("Main Menu");
     }
 
+ 
     public void Pause()
     {
-        panel.SetActive(!panel.activeSelf);
+        IsPaused = true;
+        Time.timeScale = 0f;        // freezes Update, animations, physics
+        panel.SetActive(true);
+
     }
 
     public void Resume()
-    { panel.SetActive(false);
+    {
+        IsPaused = false;
+        Time.timeScale = 1f;
+        panel.SetActive(false);
     }
+
 }

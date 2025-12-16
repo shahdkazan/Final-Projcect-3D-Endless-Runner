@@ -299,6 +299,8 @@ public class CharacterAnimations : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance.IsPaused)
+            return;
         // Ground check
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
@@ -348,22 +350,48 @@ public class CharacterAnimations : MonoBehaviour
         transform.position = pos;
     }
 
+    //public void OnMove(InputValue value)
+    //{
+    //    if (!isFalling) // Ignore input while falling
+    //    {
+    //        Vector2 input = value.Get<Vector2>();
+    //        horizontalInput = input.x;
+
+    //        // Start running slide if down pressed while grounded
+    //        if (input.y < -0.1f && isGrounded && !isSliding)
+    //        {
+    //            StartSlide();
+    //        }
+    //    }
+    //}
+
     public void OnMove(InputValue value)
     {
-        if (!isFalling) // Ignore input while falling
-        {
-            Vector2 input = value.Get<Vector2>();
-            horizontalInput = input.x;
+        if (GameManager.Instance.IsPaused || isFalling)
+            return;
 
-            // Start running slide if down pressed while grounded
-            if (input.y < -0.1f && isGrounded && !isSliding)
-            {
-                StartSlide();
-            }
+        Vector2 input = value.Get<Vector2>();
+        horizontalInput = input.x;
+
+        if (input.y < -0.1f && isGrounded && !isSliding)
+        {
+            StartSlide();
         }
     }
+
+    //public void OnJump(InputValue value)
+    //{
+    //    if (!isFalling && value.isPressed && isGrounded && !isSliding)
+    //    {
+    //        velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+    //        characterAnimator.SetTrigger("Jump");
+    //    }
+    //}
     public void OnJump(InputValue value)
     {
+        if (GameManager.Instance.IsPaused)
+            return;
+
         if (!isFalling && value.isPressed && isGrounded && !isSliding)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
@@ -399,14 +427,7 @@ public class CharacterAnimations : MonoBehaviour
         }
 
     }
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.CompareTag("Collectable"))
-    //    {
-    //        other.gameObject.SetActive(false);
-    //        GameManager.Instance.HandlePickup();
-    //    }
-    //}
+  
     private void StartFallBack()
     {
         isFalling = true;
