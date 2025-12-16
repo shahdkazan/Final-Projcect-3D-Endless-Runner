@@ -8,9 +8,9 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     // UI Elements
-    //public GameObject gameOverUI;
-    //public TextMeshProUGUI finalScoreText;
-    //public TextMeshProUGUI GameOverText;
+    public GameObject gameOverUI;
+    public TextMeshProUGUI finalScoreText;
+    public TextMeshProUGUI GameOverText;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI timesurvivedText;
 
@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     public AudioClip correctSound;
     //public AudioClip wrongSound;
     //public AudioClip winClip;
-    //public AudioClip loseClip;
+    public AudioClip loseClip;
     float elapsedTime = 0f;
 
 
@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     public GameObject gameResumebutton;
     // Game state variables
     private int score = 0;           // Player score
-    //private bool gameOver = false;   // Tracks if the game is over
+    private bool gameOver = false;   // Tracks if the game is over
     public bool IsPaused { get; private set; }
 
 
@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        //if (gameOver) return; // stop counting only after player loses
+        if (gameOver) return; // stop counting only after player loses
 
         // Count up from zero
         elapsedTime += Time.deltaTime;
@@ -61,11 +61,11 @@ public class GameManager : MonoBehaviour
     }
     public void HandlePickup()
     {
-        //if (gameOver) return;
+        if (gameOver) return;
 
-      
-            score += 1; // Increase score for correct pickup
-            audioSource.PlayOneShot(correctSound);
+
+        score += 1; // Increase score for correct pickup
+        audioSource.PlayOneShot(correctSound);
 
         UpdateUI(); // Update score display
     }
@@ -78,23 +78,24 @@ public class GameManager : MonoBehaviour
     }
 
     // Handles end-of-game logic
-    void EndGame()
+    public void EndGame()
     {
-        //gameOver = true;
+        gameOver = true;
 
-        scoreText.gameObject.SetActive(false);
+        //scoreText.gameObject.SetActive(false);
+
 
         // Show game over UI
-        //gameOverUI.SetActive(true);
-        //finalScoreText.text = "Final Score: " + score;
-        //timesurvivedText.text = elapsedTime.ToString("F2"); // seconds with 2 decimals
+        gameOverUI.SetActive(true);
+        finalScoreText.text = "Final Score: " + score;
+        timesurvivedText.text = "Time Survived: " + elapsedTime.ToString("F2"); // seconds with 2 decimals
 
         // Stop background music
         //MusicPlayer.Instance.StopMusic();
+        Time.timeScale = 0f;
 
-
-        //audioSource.PlayOneShot(winClip);
-        //GameOverText.text = "GAME OVER YOU WIN";
+        audioSource.PlayOneShot(loseClip);
+        GameOverText.text = "GAME OVER";
 
     }
     //Restart the current scene(game)
@@ -112,6 +113,7 @@ public class GameManager : MonoBehaviour
  
     public void Pause()
     {
+        if (gameOver) return;
         IsPaused = true;
         Time.timeScale = 0f;        // freezes Update, animations, physics
         panel.SetActive(true);

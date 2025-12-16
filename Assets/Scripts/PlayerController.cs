@@ -413,6 +413,7 @@ public class CharacterAnimations : MonoBehaviour
         if (!isFalling && hit.gameObject.CompareTag("Obstacle"))
         {
             StartFallBack();
+            GameManager.Instance.EndGame();
         }
         else if (hit.gameObject.CompareTag("Collectable"))
         {
