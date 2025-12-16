@@ -1,6 +1,8 @@
 using UnityEngine;
 using TMPro;                  // For handling TextMeshPro UI text
 using UnityEngine.SceneManagement; // For scene reload (restart)
+using System.Collections;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -78,31 +80,63 @@ public class GameManager : MonoBehaviour
     }
 
     // Handles end-of-game logic
+    //public void EndGame()
+    //{
+    //    gameOver = true;
+
+    //    //scoreText.gameObject.SetActive(false);
+
+
+    //    // Show game over UI
+    //    gameOverUI.SetActive(true);
+    //    finalScoreText.text = "Final Score: " + score;
+    //    timesurvivedText.text = "Time Survived: " + elapsedTime.ToString("F2"); // seconds with 2 decimals
+
+    //    // Stop background music
+    //    //MusicPlayer.Instance.StopMusic();
+    //    Time.timeScale = 0f;
+
+    //    audioSource.PlayOneShot(loseClip);
+    //    GameOverText.text = "GAME OVER";
+
+    //}
+
     public void EndGame()
     {
+        if (gameOver) return;
         gameOver = true;
 
-        //scoreText.gameObject.SetActive(false);
+        // Trigger the fallback animation already triggered in PlayerController
+        // Optionally you could trigger it here too if needed
 
+        // Show game over UI after delay
+        StartCoroutine(EndGameSequence());
+    }
 
-        // Show game over UI
+    private IEnumerator EndGameSequence()
+    {
+        // Play lose sound
+        audioSource.PlayOneShot(loseClip);
+
+        // Wait for fallback animation duration (e.g., 1 second)
+        float fallAnimDuration = 3f; // match your animator's fallback clip length
+        yield return new WaitForSeconds(fallAnimDuration);
+
+        // Show UI
         gameOverUI.SetActive(true);
         finalScoreText.text = "Final Score: " + score;
-        timesurvivedText.text = "Time Survived: " + elapsedTime.ToString("F2"); // seconds with 2 decimals
-
-        // Stop background music
-        //MusicPlayer.Instance.StopMusic();
-        Time.timeScale = 0f;
-
-        audioSource.PlayOneShot(loseClip);
+        timesurvivedText.text = "Time Survived: " + elapsedTime.ToString("F2");
         GameOverText.text = "GAME OVER";
 
+        // Pause game
+        Time.timeScale = 0f;
     }
     //Restart the current scene(game)
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        MusicPlayer.Instance.PlayMusic(); // Restart background music
+        Time.timeScale = 1f;
+        //MusicPlayer.Instance.PlayMusic(); // Restart background music
     }
 
     public void BackMainMenu()

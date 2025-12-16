@@ -434,8 +434,9 @@ public class CharacterAnimations : MonoBehaviour
         isFalling = true;
         characterAnimator.SetTrigger(fallTriggerName);
 
-        // Optional: stop forward movement while falling
-        forwardSpeed = 0f;
-        slideSpeed = 0f;
+        //// Optional: stop forward movement while falling
+        //forwardSpeed = 0f;
+        //slideSpeed = 0f;
+       
     }
 }
