@@ -35007,7 +35007,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dacffcb9172a214db132b8bfe2f1f6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectableSpawner
-  collectablePrefab: {fileID: 4107486585739814537, guid: 327253dec8f4b834db84f5a2c0098d6c, type: 3}
+  collectablePrefab: {fileID: 9134333724815299445, guid: 125a7e80cd9b6d544a7c1da705d4ad9a, type: 3}
   minRowCount: 3
   maxRowCount: 6
   spacing: 1.5
