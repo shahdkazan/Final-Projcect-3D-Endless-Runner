@@ -163,5 +163,12 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         panel.SetActive(false);
     }
+    public void SetMusicVolume(float volume)
+    {
+        if (MusicPlayer.Instance != null && MusicPlayer.Instance.audioSource != null)
+        {
+            MusicPlayer.Instance.audioSource.volume = Mathf.Clamp01(volume);
+        }
+    }
 
 }
