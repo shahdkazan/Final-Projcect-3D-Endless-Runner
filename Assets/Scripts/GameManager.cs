@@ -116,6 +116,7 @@ public class GameManager : MonoBehaviour
     private IEnumerator EndGameSequence()
     {
         // Play lose sound
+        MusicPlayer.Instance.StopMusic();
         audioSource.PlayOneShot(loseClip);
 
         // Wait for fallback animation duration (e.g., 1 second)
@@ -136,12 +137,14 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Time.timeScale = 1f;
-        //MusicPlayer.Instance.PlayMusic(); // Restart background music
+        MusicPlayer.Instance.PlayMusic(); // Restart background music
     }
 
     public void BackMainMenu()
     {
+        Time.timeScale = 1f; // Ensure normal time scale
         SceneManager.LoadScene("Main Menu");
+     
     }
 
  

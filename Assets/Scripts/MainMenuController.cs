@@ -9,11 +9,14 @@ public class MainMenuController : MonoBehaviour
     public GameObject backbutton;
     private void Start()
     {
+       
         MusicPlayer.Instance.PlayMusic();
+
     }
     public void StartGame()
     {
         SceneManager.LoadScene(gameSceneName);
+       
     }
 
     public void submenu()
