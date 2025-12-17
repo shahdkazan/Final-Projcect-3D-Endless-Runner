@@ -1569,6 +1569,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 317014308248481083, guid: 4a7a8b6f6cacb6a43a801c61b6dbaca6, type: 3}
+      propertyPath: maxSpacing
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 317014308248481083, guid: 4a7a8b6f6cacb6a43a801c61b6dbaca6, type: 3}
       propertyPath: minSpacing
       value: 6
       objectReference: {fileID: 0}
@@ -1578,7 +1582,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 317014308248481083, guid: 4a7a8b6f6cacb6a43a801c61b6dbaca6, type: 3}
       propertyPath: maxObstaclesPerSegment
-      value: 10
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 317014308248481083, guid: 4a7a8b6f6cacb6a43a801c61b6dbaca6, type: 3}
       propertyPath: 'obstacles.Array.data[2]'
@@ -2450,12 +2454,12 @@ MonoBehaviour:
   GameOverText: {fileID: 868172994}
   scoreText: {fileID: 1358688182}
   timesurvivedText: {fileID: 166735881}
-  audioSource: {fileID: 954252467}
-  correctSound: {fileID: 8300000, guid: f5a40cd8f3c010c4bb1b3e4cb36ee3f1, type: 3}
-  loseClip: {fileID: 8300000, guid: 434cd7131ec9907499cb6648a7f37d9e, type: 3}
   mainmenubutton: {fileID: 1599515449}
   panel: {fileID: 1035341102}
   gameResumebutton: {fileID: 751152251}
+  audioSource: {fileID: 954252467}
+  correctSound: {fileID: 8300000, guid: f5a40cd8f3c010c4bb1b3e4cb36ee3f1, type: 3}
+  loseClip: {fileID: 8300000, guid: 434cd7131ec9907499cb6648a7f37d9e, type: 3}
 --- !u!4 &954252469
 Transform:
   m_ObjectHideFlags: 0

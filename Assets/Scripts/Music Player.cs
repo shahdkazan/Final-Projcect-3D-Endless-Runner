@@ -16,7 +16,7 @@ public class MusicPlayer : MonoBehaviour
         }
 
         Instance = this;
-        //Do not be destroy when a color catch sence loads 
+        //Do not be destroy when a game sence loads 
         DontDestroyOnLoad(gameObject);
     }
 

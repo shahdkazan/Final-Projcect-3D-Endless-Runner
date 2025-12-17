@@ -3,10 +3,11 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
 {
-    public string gameSceneName = "Game"; // Replace with your game scene name
+    public string gameSceneName = "Game"; 
     public GameObject panel;
     public GameObject infobutton;
     public GameObject backbutton;
+    public GameObject gametitle;
     private void Start()
     {
        
@@ -23,6 +24,7 @@ public class MainMenuController : MonoBehaviour
     {
         panel.SetActive(!panel.activeSelf);
         infobutton.SetActive(false);
+        gametitle.SetActive(false);
         backbutton.SetActive(true);
     }
     public void mainmenu()
@@ -30,5 +32,6 @@ public class MainMenuController : MonoBehaviour
         panel.SetActive(false);
         infobutton.SetActive(true);
         backbutton.SetActive(false);
+        gametitle.SetActive(true);
     }
 }
